@@ -1,0 +1,11 @@
+.container-fluid {
+    height: 100vh;
+    background-color: #CCC;
+}
+
+.main-componet-container{
+background-color: white;
+}
+.page-header {
+    margin: 10px 0 20px;
+}

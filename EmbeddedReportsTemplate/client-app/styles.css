@@ -1,0 +1,135 @@
+
+@font-face {
+    font-family: "WorkSans Light";
+    src: url("/assets/WorkSans-Light.ttf") format("truetype");
+}
+
+body {
+    margin-top: 1rem;
+    font-size: 12px;
+}
+
+th {
+    color: #999;
+    font-weight: normal;
+}
+
+.btn-primary.btn-primary-custom {
+    background-color: #009ce2;
+}
+
+.form-control.input-custom {
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.form-control.input-custom:focus {
+    border: 1px solid #0274CC;
+    background-color: #E2FFFF;
+}
+
+.form-control.select-custom {
+    font-weight: bold;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    background: transparent url("/assets/chevron-down.png") no-repeat 0 center;
+    background-position: calc(100% - 5px) 1.5rem, calc(100% - 0px) 1.5rem, 100% 0;
+}
+
+.form-control.select-custom::-ms-expand {
+    display: none;
+}
+
+.form-control.select-custom:focus {
+    border: 1px solid #0274CC;
+    background: #E2FFFF url("/assets/chevron-down.png") no-repeat 0 center;
+    background-position: calc(100% - 5px) 1.5rem, calc(100% - 0px) 1.5rem, 100% 0;
+}
+
+.form-control.select-custom:disabled {
+    color: gray;
+    font-weight: normal;
+}
+
+.form-control.select-custom>option {
+    background-color: white;
+}
+
+.input-group-btn-custom>.btn {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.pagination>.active>a {
+    background-color: #009ce2;
+}
+
+.page-header-custom>h4 {
+    font-family: "WorkSans Light";
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.page-header.page-header-custom {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.pager-icon-previous {
+    display: block;
+    position: relative;
+    background: transparent url("/assets/pager-previous.png") no-repeat center;
+    width: 7px;
+    height: 18px;
+}
+
+.pager-icon-next {
+    display: block;
+    position: relative;
+    background: transparent url("/assets/pager-next.png") no-repeat center;
+    width: 7px;
+    height: 18px;
+}
+
+.pager-icon-first {
+    display: block;
+    position: relative;
+    background: transparent url("/assets/pager-first.png") no-repeat center;
+    width: 12px;
+    height: 18px;
+}
+
+.pager-icon-last {
+    display: block;
+    position: relative;
+    background: transparent url("/assets/pager-last.png") no-repeat center;
+    width: 12px;
+    height: 18px;
+}
+
+.table-condesed-custom>tbody>tr>td {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.page {
+    background: white;
+    display: block;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); 
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.page--landscape {
+    width: 28.7cm;
+    height: 19cm;
+    padding: 25px 25px 0 25px;
+}

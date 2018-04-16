@@ -1,0 +1,46 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var operators_1 = require("rxjs/operators");
+var http_1 = require("@angular/common/http");
+var core_1 = require("@angular/core");
+var grant_token_service_1 = require("./grant-token.service");
+var handle_error_1 = require("../handle-error");
+var of_1 = require("rxjs/observable/of");
+var RevisoNumberSeriesService = /** @class */ (function () {
+    function RevisoNumberSeriesService(_httpClient, _grantTokenService) {
+        this._httpClient = _httpClient;
+        this._grantTokenService = _grantTokenService;
+    }
+    RevisoNumberSeriesService_1 = RevisoNumberSeriesService;
+    RevisoNumberSeriesService.prototype.getNumberSeries = function (filter) {
+        if (this._numberSeries != null) {
+            return of_1.of(this._numberSeries);
+        }
+        else {
+            return this._httpClient.get('/api/numberseries', {
+                headers: {
+                    'x-embedded-reports-template-grant-token': this._grantTokenService.grantToken
+                }
+            })
+                .pipe(operators_1.tap(function (_) { return console.log('Number series fetched from Reviso.'); }), operators_1.catchError(handle_error_1.handleHttpError(RevisoNumberSeriesService_1.name, 'getNumberSeries')));
+        }
+    };
+    RevisoNumberSeriesService = RevisoNumberSeriesService_1 = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.HttpClient,
+            grant_token_service_1.GrantTokenService])
+    ], RevisoNumberSeriesService);
+    return RevisoNumberSeriesService;
+    var RevisoNumberSeriesService_1;
+}());
+exports.RevisoNumberSeriesService = RevisoNumberSeriesService;
+//# sourceMappingURL=reviso-number-series.service.js.map

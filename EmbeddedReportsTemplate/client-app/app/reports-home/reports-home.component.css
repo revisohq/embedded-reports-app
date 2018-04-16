@@ -1,0 +1,46 @@
+@media print{
+    .non-printable {display: none;}
+}
+
+.report-header {
+    display: flex;
+    font-family: "WorkSans Light";
+}
+
+.report-status {
+    margin-top: 30px;
+}
+
+.report__filter-area-buttons {
+    margin-top: 50px;
+}
+
+.report__filter-area-button {
+    width: 80px;
+}
+
+.collapse-button-container {
+    margin-top: 20px;
+    background-color: #CCC ;
+}
+
+.collapse-button {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 80px;
+}
+
+.collapse-button:focus{
+    background-color: white;
+}
+
+.report__action-buttons-container {
+    background-color: #CCC 
+}
+
+.report-content-host-row {
+    background-color: #CCC 
+}

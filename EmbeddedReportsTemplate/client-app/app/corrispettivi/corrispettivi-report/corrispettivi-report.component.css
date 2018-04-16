@@ -1,0 +1,19 @@
+h2 {
+    color: rgb(34, 34, 34);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+select {
+    color: rgb(57, 84, 108);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+label {
+    color:#87876F;
+}
+
+.controls-row {
+    margin-top: 15px;
+}

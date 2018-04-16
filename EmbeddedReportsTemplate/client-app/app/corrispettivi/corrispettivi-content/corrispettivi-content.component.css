@@ -1,0 +1,144 @@
+@media print{
+
+    @page {
+        size: A4 landscape;
+    }
+
+    table { page-break-inside:auto }
+
+    table caption {
+        -webkit-print-color-adjust: exact;
+        background-color: #F3F3F3 !important; 
+        font-family: helvetica, arial, sans-serif;
+        font-weight: bold;
+        color: black;
+        padding-left: 15px;
+    }
+
+    thead {
+        -webkit-print-color-adjust: exact;
+        background-color: #F3F3F3 !important; 
+    }
+
+    tr { page-break-inside:avoid; page-break-after:auto }
+
+   tfoot {
+       font-weight: bold;
+   }
+
+   .report-footer-container {
+        bottom: 0;
+        margin-bottom: 10px;
+    }       
+}
+
+.table-header {
+    width: 100%;
+}
+
+.period-container {
+    margin-top: 20px;
+    color: #757575;
+}
+
+h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+table {  
+    margin-top: 20px;  
+    font-family: arial, helvetica, sans-serif;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;    
+    font-size: 12px;
+}
+
+table caption {
+    font-weight: bold;
+    color: black;
+    background-color: #F3F3F3;
+    padding-left: 15px;
+}
+
+thead {
+    background-color: #F3F3F3; 
+}
+
+.table__header-cell{
+    border-bottom: none;
+    height: 32px;
+    vertical-align: top;
+}
+
+ table>tbody>tr:first-child td{
+    border-top: none;
+}
+
+table>tbody>tr{
+    border-bottom: 1px solid #ddd;
+}
+
+
+table>tbody>tr:last-child{
+    border-bottom: none;
+}
+
+.table__cell {
+    color: #222 ;
+    padding: 3px 15px 4px 15px;  
+}
+
+.table__cell--right-aligned {
+    text-align: right;
+}
+
+.table__cell.vat-code{
+    text-align: center;
+}
+
+.table__cell.summary__vat-code{
+    width: 154px;
+}
+
+.table__cell.summary__vat-description{
+    width: 350px;
+}
+
+.table__cell.summary__vat-rate{
+    text-align: center;
+    width: 128px;
+}
+
+.table__foot-cell {
+    font-weight: bold;
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+.report-footer-container {
+    bottom: 0;
+    color: #aaa;
+    margin-bottom: 10px;
+    position: absolute;
+    width: 95%;
+}
+
+.report-footer {
+    width: 100%;
+}
+
+.report-footer-cel--left-aligned {
+    text-align: left;
+}
+
+.report-footer-cel--centrally-aligned {
+    text-align: center;
+}
+
+.report-footer-cel--right-aligned {
+    text-align: right;
+}

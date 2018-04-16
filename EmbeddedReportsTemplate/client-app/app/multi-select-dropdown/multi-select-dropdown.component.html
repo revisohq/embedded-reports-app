@@ -1,0 +1,15 @@
+<div class="dropdown" (mouseleave)="showDropDown = false">
+  <button class="drop-toggle btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" [disabled]="loading" (click)="showDropDown=!showDropDown">
+      <span *ngIf="isCheckListEmpty() && loading">Lettura in corso... </span>
+    <span *ngIf="isCheckListEmpty() && !loading">Seleziona </span>
+    <span *ngIf="isCheckListFull() && checkedList.length < list.length">{{checkedList.slice(0,3).join(', ')}}</span>
+    <span *ngIf="isCheckListFull() && checkedList.length == list.length">Tutti</span>
+    <span class="caret"></span> 
+  </button>
+  <div class="drop-show" *ngIf="showDropDown">
+    <label *ngFor="let item of list">
+      <input type="checkbox" [(ngModel)]="item.selected" (change)="getSelectedValue($event, item)" />
+      <span>{{item.name}}</span>
+    </label>
+  </div>
+</div>

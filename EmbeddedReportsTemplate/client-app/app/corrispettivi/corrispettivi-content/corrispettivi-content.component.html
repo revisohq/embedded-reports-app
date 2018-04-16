@@ -1,0 +1,225 @@
+<div class="report-items-list">
+    <div id="pages-container" class="pages-container">
+        <div *ngFor="let currentPage of data.pages; let pageIndex = index" class="page page__corrispettivi page--landscape">
+            <div *ngIf="pageIndex > 0" class="page-break__header"></div>
+            <div class="header-container">
+                <table class="table-header">
+                    <tr>
+                        <td class="header__left">
+                            <div>
+                                <div>
+                                    <h4>Registro IVA corrispettivi</h4>
+                                </div>
+                                <div *ngIf="currentPage.numberSeriesName">
+                                    {{getPageNumberSeriesName(currentPage)}}
+                                </div>
+                                <div class="period-container">
+                                    {{data.period}}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="header__right">
+                            <div>
+                                <div>
+                                    <div class="text-right header__right__company-name">{{data.agreement.company.name}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-right header__right__company-address">{{data.agreement.company.addressLine1}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-right header__right__company-city">{{data.agreement.company.city}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-right header__right__company-vat-reg-number">P. IVA {{data.agreement.company.vatNumber}}</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="table-corrispettivi">
+                    <thead>
+                        <tr>
+                            <th class="table__cell table__header-cell date">Data</th>
+                            <th class="table__cell table__header-cell description">Descrizione</th>
+                            <th class="table__cell table__header-cell table__cell--right-aligned daily-total">Totale</th>
+                            <th class="table__cell table__header-cell vat-code">Cod. Iva</th>
+                            <th class="table__cell table__header-cell table__cell--right-aligned amount">Imponibile</th>
+                            <th class="table__cell table__header-cell table__cell--right-aligned vat">Imposta</th>
+                            <th class="table__cell table__header-cell table__cell--right-aligned total">Lordo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of currentPage.rows" class="report-row">
+                            <td class="table__cell table__body-cell date">{{row.day | date:'dd/MM/yyyy'}}</td>
+                            <td class="table__cell table__body-cell description">{{row.description}}</td>
+                            <td class="table__cell table__body-cell table__cell--right-aligned daily-total">{{row.dailyTotal | number:'1.2-2':'it-IT'}}</td>
+                            <td class="table__cell table__body-cell vat-code">{{row.vatCode}}</td>
+                            <td class="table__cell table__body-cell table__cell--right-aligned amount">{{row.amount | number:'1.2-2':'it-IT'}}</td>
+                            <td class="table__cell table__body-cell table__cell--right-aligned vat">{{row.vat | number:'1.2-2':'it-IT'}}</td>
+                            <td class="table__cell table__body-cell table__cell--right-aligned total">{{row.total | number:'1.2-2':'it-IT'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="currentPage.summary">
+                <div>
+                    <table *ngIf="currentPage.summary" class="table-summary">
+                        <caption>Riepilogo - {{currentPage.numberSeriesName}}</caption>
+                        <thead>
+                            <tr>
+                                <th class="table__cell table__header-cell summary__vat-code">Cod. IVA</th>
+                                <th class="table__cell table__header-cell summary__vat-description">Descrizione IVA</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__vat-rate">% IVA</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__amount">Imponibile</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__vat">Imposta</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__total">Totale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of currentPage.summary">
+                                <td class="table__cell table__body-cell summary__vat-code">
+                                    {{row.vatCode}}
+                                </td>
+                                <td class="table__cell table__body-cell summary__vat-description">
+                                    {{row.vatDescription}}
+                                </td>
+                                <td class="table__cell table__body-cell summary__vat-rate">
+                                    {{row.ratePercentage | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__body-cell table__cell--right-aligned summary__amount">
+                                    {{row.amount | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__body-cell table__cell--right-aligned summary__vat">
+                                    {{row.vat | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__body-cell table__cell--right-aligned summary__total">
+                                    {{row.total | number:'1.2-2':'it-IT'}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned">Totale:</td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned summary__amount">
+                                    {{currentPage.summaryAmount | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned summary__vat">
+                                    {{currentPage.summaryVat | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned summary__total">
+                                    {{currentPage.summaryTotal | number:'1.2-2':'it-IT'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="report-footer-container">
+                <table class="report-footer">
+                    <tr>
+                        <td class="report-footer-cel--left-aligned">{{data.year}}/{{getFinalSummaryPageNumber()}}</td>
+                        <td class="report-footer-cel--central-aligned">{{data.agreement.company.name}}</td>
+                        <td class="report-footer-cel--right-aligned"> P. IVA {{data.agreement.company.vatNumber}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div *ngIf="data.finalSummary" class="page page__last-summary page--landscape ">
+            <div class="page-break__header"></div>
+            <div class="header-container">
+                <table class="table-header">
+                    <tr>
+                        <td class="header__left">
+                            <div>
+                                <div>
+                                    <h4>Registro IVA corrispettivi</h4>
+                                </div>
+                                <div class="period-container">
+                                    {{data.period}}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="header__right">
+                            <div>
+                                <div>
+                                    <div class="text-right header__right__company-name">{{data.agreement.company.name}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-right header__right__company-address">{{data.agreement.company.addressLine1}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-right header__right__company-city">{{data.agreement.company.city}}</div>
+                                </div>
+                                <div>
+                                    <div class="text-right header__right__company-vat-reg-number">P. IVA {{data.agreement.company.vatNumber}}</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <div>
+                    <table class="table-summary">
+                        <caption>Riepilogo generale</caption>
+                        <thead>
+                            <tr>
+                                <th class="table__cell table__header-cell summary__vat-code">Cod. IVA</th>
+                                <th class="table__cell table__header-cell summary__vat-description">Descrizione IVA</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__vat-rate">% IVA</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__amount">Imponibile</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__vat">Imposta</th>
+                                <th class="table__cell table__header-cell table__cell--right-aligned summary__total">Totale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of data.finalSummary">
+                                <td class="table__cell table__body-cell summary__vat-code">
+                                    {{row.vatCode}}
+                                </td>
+                                <td class="table__cell table__body-cell summary__vat-description">
+                                    {{row.vatDescription}}
+                                </td>
+                                <td class="table__cell table__body-cell summary__vat-rate">
+                                    {{row.ratePercentage | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__body-cell table__cell--right-aligned summary__amount">
+                                    {{row.amount | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__body-cell table__cell--right-aligned summary__vat">
+                                    {{row.vat | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__body-cell table__cell--right-aligned summary__total">
+                                    {{row.total | number:'1.2-2':'it-IT'}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned">Totale:</td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned summary__amount">
+                                    {{data.finalSummaryTotals.amount | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned summary__vat">
+                                    {{data.finalSummaryTotals.vat | number:'1.2-2':'it-IT'}}
+                                </td>
+                                <td class="table__cell table__foot-cell table__cell--right-aligned summary__total">
+                                    {{data.finalSummaryTotals.total | number:'1.2-2':'it-IT'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="report-footer-container">
+                <table class="report-footer">
+                    <tr>
+                        <td class="report-footer-cel--left-aligned">{{data.year}}/{{getFinalSummaryPageNumber()}}</td>
+                        <td class="report-footer-cel--central-aligned">{{data.agreement.company.name}}</td>
+                        <td class="report-footer-cel--right-aligned"> P. IVA {{data.agreement.company.vatNumber}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

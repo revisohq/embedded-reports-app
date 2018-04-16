@@ -1,0 +1,47 @@
+<div class="row report__filter-area non-printable">
+    <div class="col-md-12">
+        <div class="report-header">
+            <div class="report-title">
+                <h2>{{currentReportTitle}}</h2>
+            </div>
+            <div *ngIf="loading" class="report-status">
+                <report-loading></report-loading>
+            </div>
+        </div>
+        <div [collapse]="isCollapsed" class="card card-block card-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <ng-template report-host></ng-template>
+                </div>
+            </div>
+            <div class="row report__filter-area-buttons">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-default report__filter-area-button" data-dismiss="modal" (click)="clearFilter()">Cancella</button>
+                    <button type="button" class="btn btn-primary btn-primary-custom report__filter-area-button" (click)="getReportData()">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row collapse-button-container non-printable">
+    <div class="col-md-4 col-md-offset-4 text-center">
+        <button class="btn btn-default collapse-button" (click)="isCollapsed = !isCollapsed">
+            <span *ngIf="isCollapsed" class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+            <span *ngIf="!isCollapsed" class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+<div class="row report__action-buttons-container non-printable">
+    <div class="col-md-12">
+        <div class="btn-group pull-right" dropdown [isDisabled]="!dataAvailable">
+            <button type="button" class="btn btn-default" [disabled]="!dataAvailable" (click)="exportToExcel()">Excel</button>
+            <button type="button" class="btn btn-default" [disabled]="!dataAvailable" (click)="exportToPdf()">PDF</button>
+            <button type="button" class="btn btn-default" [disabled]="!dataAvailable" (click)="printReport()">Stampa</button>
+        </div>
+    </div>
+</div>
+<div class="row report-content-host-row">
+    <div class="col-md-12">
+        <ng-template report-content-host></ng-template>
+    </div>
+</div>

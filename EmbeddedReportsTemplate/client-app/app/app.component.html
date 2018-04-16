@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row main-componet-container" *ngIf="!authorizing && !unauthorized">
+        <div class="col-md-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div class="row" *ngIf="!authorizing && unauthorized">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Errore:</span>
+                Accesso non autorizzato.
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="authorizing">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                Accesso in corso.
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row" *ngIf="applicationVersion.major > 0">
+        <div class="col-md-12">
+            <small>v{{applicationVersion.major}}.{{applicationVersion.minor}}.{{applicationVersion.patch}}</small>
+            <small *ngIf="clientAppIsProduction">production</small>
+            <small *ngIf="!clientAppIsProduction">development</small>
+        </div>
+    </div> -->
+</div>

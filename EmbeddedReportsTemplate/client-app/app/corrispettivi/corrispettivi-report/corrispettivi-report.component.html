@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <form>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Date</h2>
+                                </div>
+                            </div>
+                            <div class="row controls-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filterYear" class="control-label">Anno</label>
+                                        <select id="filterYear" name="filterYear" class="form-control" [(ngModel)]="filter.year">
+                                            <option *ngFor="let year of years" [ngValue]="year">
+                                                {{ year }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="period" class="control-label">Periodo</label>
+                                        <select id="period" name="period" class="form-control" [(ngModel)]="filter.period">
+                                            <option *ngFor="let period of periods; let idx = index" [ngValue]="period.value">
+                                                {{ period.description }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <h2>Altro</h2>
+                                </div>
+                            </div>
+                            <div class="row controls-row">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="form-group">
+                                        <label for="numberSeriesFilter" class="control-label">Serie numeriche</label>
+                                        <multi-select-dropdown id="numberSeriesFilter" [list]="numberSeries" [loading]="loadingNumberSeries" (shareCheckedList)="shareCheckedList($event)" 
+                                            (shareIndividualCheckedList)="shareIndividualCheckedList($event)">
+                                        </multi-select-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <h2>Conti</h2>
+                                </div>
+                            </div>
+                            <div class="row controls-row">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="includeDraft" type="checkbox" [checked]="includeDraftEntries" [(ngModel)]="filter.includeDraftEntries" (change)="includeDraftEntries = !includeDraftEntries"> Includi registrazioni non contabilizzate
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

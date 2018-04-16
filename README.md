@@ -22,7 +22,7 @@ Furthermore the application is a **_containerized_** application and to achieve 
 **NB** For a list of supported Linux distributions, see the documentation [here](https://docs.docker.com/install/#server).
 
 #### Install client-side dependencies
-1. Go to `EmbeddedReportsTemplate/EmbeddedReportsTemplate`
+1. Go to `embedded-reports-template/EmbeddedReportsTemplate`
 2. Run ```npm install```
 
 #### Application settings
@@ -68,11 +68,12 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y ttf-mscorefonts-installer
 ```
-4. Run `docker build -t _your-image-name_ .`
-5. Copy _your-image-name_ in the application _Dockerfile_
+4. Run `docker build -t <image-name> .`
+5. Specify the newly created image name in the application _Dockerfile_
 
 #### Run the application
-1. Run VS 2017 and open the solution file _EmbeddedReportsTemplate.sln_
+1. Go to `embedded-reports-template/EmbeddedReportsTemplate` and run `npm run watch`.
+2. Run VS 2017 and open the solution file _EmbeddedReportsTemplate.sln_
 2. Set the _**docker-compose**_ project as startup project
 3. Set _Develop_ as solutions configurations
 4. Once the application start, go to _/#/corrispettivi_
