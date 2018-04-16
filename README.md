@@ -5,7 +5,7 @@ This repo contains the application template to create reports against the data s
 The application was built using:
 
 * angular for the client-side
-* Aspnet.core for the server-side
+* Aspnet Core for the server-side
 
 Furthermore the application is a **_containerized_** application and to achieve this it makes use of the docker platform.
 
