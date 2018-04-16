@@ -76,6 +76,6 @@ RUN apt-get update \
 2. Run VS 2017 and open the solution file _EmbeddedReportsTemplate.sln_
 2. Set the _**docker-compose**_ project as startup project
 3. Set _Develop_ as solutions configurations
-4. Once the application start, go to _/#/corrispettivi_
+4. Once the application start, go to _http://localhost:port/#/corrispettivi_
 
 
