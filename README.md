@@ -1,6 +1,6 @@
 # embedded reports template
 
-This repo contains the application template to create reports against data saved in Reviso.
+This repo contains the application template to create reports against the data saved in Reviso.
 
 The application was built using:
 
