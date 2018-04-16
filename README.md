@@ -42,8 +42,8 @@ As we already said, this is a _**containerized**_ application that use the docke
 In order to be able to execute the application inside docker, you need to create an image, based on Linux OS, with the correct dependencies installed. To do this, use the following instructions to create the Dockerfile for the image.
 
 1. Create a folder
-2. Create a file called Dockerfile
-3. Copy the following instructions
+2. Create a file called _Dockerfile_
+3. Copy and paste the following instructions to the newly created _Dockerfile_
 ```
 #Download base image aspnetcore 2.0.5
 FROM microsoft/aspnetcore:2.0.5
